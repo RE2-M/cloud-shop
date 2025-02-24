@@ -1,5 +1,10 @@
 [![Banner](https://i.imgur.com/Qi8W9nh.png)](https://discord.gg/jAnEnyGBef)
 
+### RSG CORE
+
+Integrated With RSG And Redm Natives .
+you can download PreBuild Version from https://github.com/RE2-M/cloud-shop/releases/tag/release
+
 > Upgrade your FiveM server with our cutting-edge shop system that combines sleek design, high performance, and high customizability.
 
 ## `⭐`丨Features
