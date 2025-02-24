@@ -1,31 +1,45 @@
-name: Build
+name: Build and Release
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - created
 
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout your repository
-      - name: Checkout repo
+      # Step 1: Check out the code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js
-      - name: Set up Node
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 # Use Node.js 18 or a compatible version
+          node-version: 18
 
-      # Install dependencies
+      # Step 3: Install dependencies for the project in `web` folder
       - name: Install dependencies
         run: npm install
         working-directory: ./web
 
-      # Run the build process
+      # Step 4: Build the project in `web` folder
       - name: Build the project
         run: npm run build
         working-directory: ./web
+
+      # Step 5: Create a zip archive containing the specified directories and files
+      - name: Create release archive
+        run: |
+          zip -r release.zip bridge client server shared web/dist fxmanifest.lua README.md
+
+      # Step 6: Upload the release archive as a release asset
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./release.zip
+          asset_name: release.zip
+          asset_content_type: application/zip
