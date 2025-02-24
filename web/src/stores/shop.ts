@@ -49,7 +49,7 @@ export const useShopStore = defineStore("shop", () => {
     buttons: {
       addCart: "Add To Cart",
       payBank: "Bank",
-      payCash: "Cash",
+      payCash: "Pay",
     },
     item: {
       paymentTitle: "Payment",

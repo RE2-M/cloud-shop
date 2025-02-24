@@ -29,6 +29,7 @@ const addToCart = (name: string): void => {
       shopStore.cart.push({
         label: item.label,
         name: item.name,
+        image: item.image?item.image:item.name,
         price: item.price,
         quantity: 1,
         category: item.category,
@@ -49,7 +50,7 @@ onMounted(async () => {
       <div v-if="shopStore.selectedCategory === 'all' || shopStore.selectedCategory === item.category" class="item">
         <div class="front">
           <div class="image-wrapper">
-            <img :src="getImageSrc(item.name)" draggable="false" />
+            <img :src="getImageSrc(item.image)" draggable="false" />
           </div>
           <div class="info">
             <p class="item-label">{{ item.label }}</p>

@@ -61,7 +61,7 @@ const validateQuantityInput = (index: number, event?: KeyboardEvent): void => {
   <section class="item-list">
     <div v-for="(item, index) in shopStore.cart" :key="item.name" class="item">
       <div class="front">
-        <img :src="getImageSrc(item.name)" draggable="false" />
+        <img :src="getImageSrc(item.image)" draggable="false" />
         <div class="text-container">
           <p class="item-label">{{ item.label }}</p>
           <span class="item-price">{{ formatPrice(item.price) }}</span>

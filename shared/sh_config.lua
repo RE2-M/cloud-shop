@@ -5,12 +5,12 @@ return {
 
 	--[[ GENERAL CONFIGURATION ]]
 
-	Framework = "esx", -- Supported: "esx", "qbcore", or "custom"
+	Framework = "rsgcore", -- Supported: "esx", "qbcore", "rsgcore", or "custom"
 	DebugMode = false, -- Enable print statements for debugging
 	WeaponAsItem = true, -- Treat weapons as inventory items (only supported inventorys)
-	OxInventory = true, -- Uses ox_inventory exports if true
+	OxInventory = false, -- Uses ox_inventory exports if true
 
-	ImagePath = "nui://ox_inventory/web/images/",
+	ImagePath = "nui://rsg-inventory/html/images/",
 	--[[
 	Image Path Configuration Options:
 	
@@ -34,7 +34,7 @@ return {
 
 	-- Target Settings (ox_target)
 	Target = {
-		Enabled = false,
+		Enabled = true,
 		BoxZoneSize = vec3(4, 4, 4),
 		DrawSprite = true,
 		Icon = "fa-solid fa-cart-shopping", -- https://fontawesome.com
@@ -48,87 +48,43 @@ return {
 	Shops = {
 		["market"] = {
 			Locations = {
-				vec4(372.8008, 328.1116, 103.5665, 262.1354), -- Clinton Ave
-				vec4(2555.5110, 380.7313, 108.6229, 0.9597), -- Palomino Ave
-				vec4(-3040.5376, 583.9359, 7.9089, 17.7445), -- Inseno Road
-				vec4(-3243.9229, 1000.0519, 12.8307, 0.7583), -- Barbareno Rd
-				vec4(-2193.4412, 4290.1064, 49.1743, 63.6331), -- Great Ocean Hwy
-				vec4(1959.1536, 3741.4165, 32.3437, 298.7749), -- Niland Ave
-				vec4(2676.5083, 3280.1863, 55.2411, 335.5104), -- Senora Fwy
-				vec4(1728.5699, 6416.7671, 35.0372, 243.3380), -- Senora Fwy 2
-				vec4(1134.2589, -983.0569, 46.4158, 278.9547), -- El Rancho Blvd
-				vec4(-1221.4543, -908.0496, 12.3263, 36.5340), -- San Andreas Ave
-				vec4(-1486.7350, -377.5593, 40.1634, 132.9464), -- Prosperity St
-				vec4(-2966.3162, 391.5883, 15.0433, 86.4455), -- Great Ocean Hwy
-				vec4(24.5062, -1345.5989, 29.4970, 263.3659), -- Inoccence Blvd
-				vec4(-561.7218, 286.8480, 82.1765, 266.4413), -- Milton Rd
-				vec4(-47.2886, -1758.5280, 29.4210, 45.3676), -- Davis Ave
-				vec4(1165.0068, -323.6485, 69.2051, 101.2836), -- West Mirrow Drive
-				vec4(-706.0665, -914.6005, 19.2156, 82.3892), -- Palomino Ave
-				vec4(-1819.4907, 793.5951, 138.0846, 132.5959), -- Banham Canyon Dr
-				vec4(549.2471, 2669.6699, 42.1565, 96.9846), -- Route 68
-				vec4(1392.0671, 3606.1155, 34.9809, 203.5101), -- Algonquin Blvd
-				vec4(1984.2482, 3054.3589, 47.2151, 240.0611), -- Panorama Dr
+				vector4(1330.11, -1293.64, 76.97, 67.13), -- Rhodes
+				vector4(-324.23, 804.15, 117.83, 279.91), --Valentine
+				vector4(-1789.26, -387.42, 160.28, 56.51), --Strawberry	
+				vector4(2931.14, 1365.91, 45.15, 252.93), -- Annesberg
+				vector4(2860.21, -1202.15, 49.54, 9.12), --Saint Denis
+				vector4(-5486.36, -2937.57, -0.45, 133.29), --Tumbleweed
+				vector4(-3687.33, -2622.88, -13.48, 271.79), --Armadillo
+				vector4(-785.65, -1322.16, 43.83, 187.16), --Blackwater 
+				vector4(3025.39, 561.20, 44.67, 262.99),--Van Horn
 			},
 			Categories = {
 				{ name = "All Products", type = "all", icon = "ic:round-clear-all" }, --! Required for all shops
 				{ name = "Food", type = "food", icon = "mdi:food-drumstick" },
 				{ name = "Drinks", type = "drinks", icon = "ion:water-sharp" },
-				{ name = "Electronics", type = "electronics", icon = "ic:round-phone-iphone" },
-				{ name = "Tools", type = "tools", icon = "ion:hammer" },
-				{ name = "Healing", type = "healing", icon = "material-symbols:healing" },
 			},
 			Items = {
 				-- Food
-				{ name = "bread", label = "Bread", category = "food", price = 40 },
-				{ name = "burger", label = "Burger", category = "food", price = 50 },
-				{ name = "fries", label = "Fries", category = "food", price = 50 },
+				{ name = "bread",image= "consumable_bread_roll", label = "Bread", category = "food", price = 40 },
 
 				-- Drinks
-				{ name = "water", label = "Water Bottle", category = "drinks", price = 25 },
-				{ name = "sprunk", label = "Sprunk Can", category = "drinks", price = 35 },
-				{ name = "cola", label = "Cola Can", category = "drinks", price = 35 },
-
-				-- Electronics
-				{ name = "radio", label = "Radio", category = "electronics", price = 300 },
-				{ name = "phone", label = "Phone", category = "electronics", price = 800 },
-				{ name = "rolex", label = "Rolex", category = "electronics", price = 10000 },
-
-				-- Tools
-				{ name = "lockpick", label = "Lockpick", category = "tools", price = 75 },
-				{ name = "binoculars", label = "Binoculars", category = "tools", price = 150 },
-				{ name = "repairkit", label = "Repairkit", category = "tools", price = 200 },
-
-				-- Healing
-				{ name = "weed", label = "Weed", category = "healing", price = 15 },
-				{ name = "bandage", label = "Bandage", category = "healing", price = 50 },
-				{ name = "medikit", label = "Medikit", category = "healing", price = 200 },
+				{ name = "water",image= "consumable_water_filtered", label = "Water Bottle", category = "drinks", price = 25 },
 			},
 			Locales = {
-				title = "market",
+				title = "General Store",
 				tag = "24/7",
-				description = "Welcome to your local market, where we're always here for you, day or night!\nExplore a curated selection of premium goods, tailored to meet your every need.",
+				description = "Welcome to your General Store, where we're always here for you, day or night!\nExplore a curated selection of premium goods, tailored to meet your every need.",
 			},
 			Blip = {
-				Name = "Shop [24/7]",
-				Sprite = 59,
+				Name = "General Store",
+				Sprite = 'blip_shop_store',
 				Color = 0,
-				Scale = 0.7,
+				Scale = 0.2,
 			},
 			NpcPed = {
 				Model = `mp_m_shopkeep_01`,
 				Scenario = "WORLD_HUMAN_AA_SMOKE",
 			},
-			--[[
-			Marker = {
-				Type = 20,
-				Size = vec3(0.7, 0.7, 0.7),
-				Color = { 65, 133, 235, 120 },
-				BobUpAndDown = false,
-				FaceCamera = false,
-				Rotate = true,
-			},
-			]]
 			RenderDistance = 15.0, -- Distance at which the marker or NPCs are visible
 			License = {
 				Required = false, -- Whether a license is required to access the shop
@@ -140,118 +96,72 @@ return {
 		},
 		["weapon_shop"] = {
 			Locations = {
-				vec4(22.6509, -1105.4863, 29.7970, 161.7508), -- Elgin Ave
-				vec4(-662.2554, -933.3735, 21.8292, 183.0097), -- Palomino Ave
-				vec4(842.3751, -1035.5238, 28.1948, 356.2464), -- Olympic Fwy
-				vec4(254.0491, -50.7247, 69.9410, 76.7617), -- Spanish Ave
-				vec4(2567.8792, 292.3385, 108.7348, 3.7121), -- Palomino Fwy
-				vec4(1692.0569, 3761.0879, 34.7053, 227.8851), -- Algonquin Blvd
-				vec4(-331.7583, 6085.2231, 31.4548, 220.9601), -- Great Ocean Hwy
-				vec4(-1119.0983, 2699.9138, 18.5541, 223.6154), -- Route 68
-				vec4(-1303.8849, -394.7360, 36.6958, 76.3115), -- Morningwood Blvd
-				vec4(810.1567, -2159.2566, 29.6190, 1.3184), -- Popular St
-				vec4(-3173.7952, 1088.4893, 20.8387, 250.4138), -- Barbareno Rd
+				vector4(-280.36, 778.90, 119.45, 2.22), --Valentine
+				vector4(-5506.23, -2964.65, -0.69, 116.37), --Tumbleweed
+				vector4(2718.02, -1286.44, 49.59, 35.07), --Saint Denis
+				vector4(1323.34, -1323.37, 77.84, 358.27), --Rhodes
+				vector4(2948.11, 1318.60, 44.77, 69.14), --Annesberg
 			},
 			Categories = {
 				{ name = "All Products", type = "all", icon = "ic:round-clear-all" },
-				{ name = "Weapons", type = "weapons", icon = "mdi:pistol" },
-				{ name = "Ammo", type = "ammo", icon = "mdi:ammunition" },
-				{ name = "Attachments", type = "attachments", icon = "game-icons:machine-gun-magazine" },
-				{ name = "Armour", type = "armour", icon = "game-icons:kevlar-vest" },
+				{ name = "Revolvers", type = "revolver", icon = "game-icons:revolver" },
+				{ name = "Pistols", type = "pistol", icon = "game-icons:pistol-gun" },
+				{ name = "Rifles", type = "rifle", icon = "game-icons:winchester-rifle" },
+				{ name = "Ammo", type = "ammo", icon = "game-icons:ammo-box" },
+				-- { name = "Misc", type = "misc", icon = "game-icons:skipping-rope" },
 			},
 			Items = {
+				-- Revolvers
+				{ name = "weapon_revolver_cattleman",image = "weapon_revolver_cattleman", label = "Cattleman Revolver", category = "revolver", price = 50 },
+				{ name = "weapon_revolver_doubleaction",image = "weapon_revolver_doubleaction", label = "DoubleAction Revolver", category = "revolver", price = 127 },
+				{ name = "weapon_revolver_doubleaction_gambler",image = "weapon_revolver_doubleaction_gambler", label = "DoubleAction Revolver", category = "revolver", price = 190 },
+				{ name = "weapon_revolver_lemat",image = "weapon_revolver_lemat", label = "Lemat Revolver", category = "revolver", price = 317 },
+				{ name = "weapon_revolver_navy",image = "weapon_revolver_navy", label = "Navy Revolver", category = "revolver", price = 275 },
+				{ name = "weapon_revolver_schofield",image = "weapon_revolver_schofield", label = "Schofield Revolver", category = "revolver", price = 192 },
+
 				-- Pistols
-				{ name = "WEAPON_GADGETPISTOL", label = "Gadgetpistol", category = "weapons", price = 250 },
-				{ name = "WEAPON_SNSPISTOL", label = "SNS Pistol", category = "weapons", price = 350 },
-				{ name = "WEAPON_CERAMICPISTOL", label = "Ceramicpistol", category = "weapons", price = 450 },
-				{ name = "WEAPON_PISTOL", label = "Pistol", category = "weapons", price = 550 },
-				{ name = "WEAPON_PISTOLXM3", label = "WM 29 Pistol", category = "weapons", price = 750 },
+				{ name = "weapon_pistol_mauser",image = "weapon_pistol_mauser", label = "Mauser Pistol", category = "pistol", price = 600 },
+				{ name = "weapon_pistol_semiauto",image = "weapon_pistol_semiauto", label = "SemiAuto Pistol", category = "pistol", price = 537 },
+				{ name = "weapon_pistol_volcanic",image = "weapon_pistol_volcanic", label = "SemiAuto Pistol", category = "pistol", price = 270 },
 
-				-- Melee
-				{ name = "WEAPON_KNUCKLE", label = "Knuckle", category = "weapons", price = 150 },
-				{ name = "WEAPON_KNIFE", label = "Knife", category = "weapons", price = 200 },
-				{ name = "WEAPON_SWITCHBLADE", label = "Switchblade", category = "weapons", price = 250 },
-				{ name = "WEAPON_DAGGER", label = "Dagger", category = "weapons", price = 300 },
-				{ name = "WEAPON_MACHETE", label = "Machete", category = "weapons", price = 350 },
-				{ name = "WEAPON_HATCHET", label = "Hatchet", category = "weapons", price = 400 },
-				{ name = "WEAPON_BATTLEAXE", label = "Battleaxe", category = "weapons", price = 450 },
-				{ name = "WEAPON_STONE_HATCHET", label = "Stone Hatchet", category = "weapons", price = 500 },
-				{ name = "WEAPON_BOTTLE", label = "Broken Bottle", category = "weapons", price = 100 },
-				{ name = "WEAPON_BAT", label = "Bat", category = "weapons", price = 200 },
-				{ name = "WEAPON_CROWBAR", label = "Crowbar", category = "weapons", price = 250 },
-				{ name = "WEAPON_GOLFCLUB", label = "Golfclub", category = "weapons", price = 300 },
-				{ name = "WEAPON_HAMMER", label = "Hammer", category = "weapons", price = 250 },
-				{ name = "WEAPON_POOLCUE", label = "Poolcue", category = "weapons", price = 150 },
-				{ name = "WEAPON_WRENCH", label = "Wrench", category = "weapons", price = 200 },
+				-- Rifles
+				{ name = "weapon_rifle_boltaction",image = "weapon_rifle_boltaction", label = "BoltAction", category = "rifle", price = 216 },
+				{ name = "weapon_rifle_elephant",image = "weapon_rifle_elephant", label = "Elephant Rifle", category = "rifle", price = 580 },
+				{ name = "weapon_rifle_springfield",image = "weapon_rifle_springfield", label = "Springfield Rifle", category = "rifle", price = 156 },
+				{ name = "weapon_rifle_varmint",image = "weapon_rifle_varmint", label = "Varmint Rifle", category = "rifle", price = 72 },
+				
+				-- Repeater
+				{ name = "weapon_repeater_carbine",image = "weapon_repeater_carbine", label = "Carbine Repeater", category = "rifle", price = 90 },
+				{ name = "weapon_repeater_evans",image = "weapon_repeater_evans", label = "Evans Repeater", category = "rifle", price = 300 },
+				{ name = "weapon_repeater_winchester",image = "weapon_repeater_winchester", label = "Winchester Repeater", category = "rifle", price = 243 },
+				{ name = "weapon_repeater_henry",image = "weapon_repeater_henry", label = "Hanry Repeater", category = "rifle", price = 348 },
 
-				-- Ammo
-				{ name = "ammo-9", label = "9mm Ammo", category = "ammo", price = 100 },
-				{ name = "ammo-22", label = ".22 LR Ammo", category = "ammo", price = 120 },
-				{ name = "ammo-38", label = ".38 LC Ammo", category = "ammo", price = 140 },
-				{ name = "ammo-44", label = ".44 Magnum Ammo", category = "ammo", price = 160 },
-				{ name = "ammo-45", label = ".45 ACP Ammo", category = "ammo", price = 180 },
-				{ name = "ammo-rifle", label = "5.56x45 Ammo", category = "ammo", price = 200 },
-				{ name = "ammo-rifle2", label = "7.62x39 Ammo", category = "ammo", price = 220 },
-				{ name = "ammo-shotgun", label = "12 Gauge Ammo", category = "ammo", price = 150 },
-				{ name = "ammo-sniper", label = "7.62x51 Ammo", category = "ammo", price = 250 },
-				{ name = "ammo-heavysniper", label = ".50 BMG Ammo", category = "ammo", price = 300 },
-				{ name = "ammo-musket", label = ".50 Ball Ammo", category = "ammo", price = 350 },
-				{ name = "ammo-flare", label = "Flare Ammo", category = "ammo", price = 120 },
+				-- Sniper Rifles
+				{ name = "weapon_sniperrifle_rollingblock",image = "weapon_sniperrifle_rollingblock", label = "Rollingblock Sniper Rifle", category = "rifle", price = 411 },
+				{ name = "weapon_sniperrifle_carcano",image = "weapon_sniperrifle_carcano", label = "Carcano Sniper Rifle", category = "rifle", price = 456 },
 
-				-- Armor
-				{ name = "small_armour", label = "Small Armour", category = "armour", price = 150 },
-				{ name = "medium_armour", label = "Medium Armour", category = "armour", price = 200 },
-				{ name = "heavy_armour", label = "Heavy Armour", category = "armour", price = 250 },
-
-				-- Attachments
-				{ name = "at_suppressor", label = "Suppressor", category = "attachments", price = 200 },
-				{ name = "at_grip", label = "Grip", category = "attachments", price = 150 },
-				{ name = "at_flashlight", label = "Flashlight", category = "attachments", price = 180 },
-				{ name = "at_barrel", label = "Barrel", category = "attachments", price = 220 },
-
-				-- Magazines
-				{ name = "at_clip_extended", label = "Extended Light Magazine", category = "attachments", price = 200 },
-				{ name = "at_clip_extended2", label = "Extended Heavy Magazine", category = "attachments", price = 225 },
-				{ name = "at_clip_drum", label = "Drum Magazine", category = "attachments", price = 250 },
-
-				-- Scopes
-				{ name = "at_scope_macro", label = "Macro Scope", category = "attachments", price = 300 },
-				{ name = "at_scope_small", label = "Small Scope", category = "attachments", price = 250 },
-				{ name = "at_scope_medium", label = "Medium Scope", category = "attachments", price = 270 },
-				{ name = "at_scope_large", label = "Large Scope", category = "attachments", price = 300 },
-				{ name = "at_scope_advanced", label = "Advanced Scope", category = "attachments", price = 350 },
-				{ name = "at_scope_nv", label = "NV-Scope", category = "attachments", price = 400 },
-				{ name = "at_scope_thermal", label = "Thermal Scope", category = "attachments", price = 450 },
-				{ name = "at_scope_holo", label = "Holo Scope", category = "attachments", price = 500 },
-
-				-- Muzzles
-				{ name = "at_muzzle_flat", label = "Flat Muzzle", category = "attachments", price = 150 },
-				{ name = "at_muzzle_tactical", label = "Tactical Muzzle", category = "attachments", price = 180 },
-				{ name = "at_muzzle_fat", label = "Fat Muzzle", category = "attachments", price = 200 },
-				{ name = "at_muzzle_heavy", label = "Heavy Muzzle", category = "attachments", price = 250 },
-				{ name = "at_muzzle_slanted", label = "Slanted Muzzle", category = "attachments", price = 180 },
-				{ name = "at_muzzle_split", label = "Split Muzzle", category = "attachments", price = 200 },
-				{ name = "at_muzzle_squared", label = "Squared Muzzle", category = "attachments", price = 220 },
-				{ name = "at_muzzle_bell", label = "Bell Muzzle", category = "attachments", price = 250 },
+				-- Ammos
+				{ name = "ammo_box_revolver",image = "ammo_box_revolver", label = "Revolver Ammo box", category = "ammo", price = 10 },
+				{ name = "ammo_box_pistol",image = "ammo_box_pistol", label = "Pistol Ammo box", category = "ammo", price = 10 },
+				{ name = "ammo_box_rifle",image = "ammo_box_rifle", label = "Rifle Ammo box", category = "ammo", price = 10 },
+				{ name = "ammo_box_repeater",image = "ammo_box_repeater", label = "Repeater Ammo box", category = "ammo", price = 10 },
+				{ name = "ammo_box_shotgun",image = "ammo_box_shotgun", label = "Shotgun Ammo box", category = "ammo", price = 10 },
+				{ name = "ammo_box_rifle_elephant",image = "ammo_box_rifle_elephant", label = "Elephant Ammo box", category = "ammo", price = 10 },
 			},
 			Locales = {
-				title = "weapon shop",
+				title = "Weapon Shop",
 				tag = "24/7",
 				description = "Welcome to your local weapon shop, where we're always here for you, day or night!\nExplore a curated selection of premium goods, tailored to meet your every need.",
 			},
 			Blip = {
-				Name = "Weapon Shop [24/7]",
-				Sprite = 110,
+				Name = "Weapon Shop",
+				Sprite = 'blip_shop_gunsmith',
 				Color = 0,
-				Scale = 0.7,
-			},
-			NpcPed = {
-				Model = `mp_m_weapexp_01`,
-				Scenario = "WORLD_HUMAN_GUARD_STAND",
+				Scale = 0.2,
 			},
 			RenderDistance = 15.0,
 			License = {
-				Required = true,
+				Required = false,
 				BuyDialog = true,
 				Type = "weapon",
 				TypeLabel = "Weapon License",

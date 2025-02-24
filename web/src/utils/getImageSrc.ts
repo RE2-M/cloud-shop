@@ -1,8 +1,8 @@
 import { useShopStore } from "@/stores/shop"
 
-export const getImageSrc = (name: string): string | undefined => {
+export const getImageSrc = (image: string): string | undefined => {
   const shopStore = useShopStore()
-  if (!name || typeof name !== "string") return undefined
+  if (!image || typeof image !== "string") return undefined
 
-  return `${shopStore.imagePath}${encodeURIComponent(name)}.png`
+  return `${shopStore.imagePath}${encodeURIComponent(image)}.png`
 }

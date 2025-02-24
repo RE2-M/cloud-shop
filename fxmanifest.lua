@@ -1,10 +1,12 @@
-fx_version "cerulean"
-game "gta5"
+fx_version 'cerulean'
+game 'rdr3'
+rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
+
 
 lua54 "yes"
 use_experimental_fxv2_oal "yes"
 
-author "yiruzu"
+author "yiruzu-Re2-M"
 description "Cloud Resources - Shop"
 version "1.2.1"
 

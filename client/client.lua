@@ -14,15 +14,15 @@ local currentShop = nil
 --[[ UTILITY FUNCTIONS ]]
 
 local function CreateBlips(coords, blipSettings)
-	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-	SetBlipSprite(blip, blipSettings.Sprite)
-	SetBlipDisplay(blip, 4)
+	-- local StoreBlip = BlipAddForCoords(1664425300, coords)
+	print(joaat(blipSettings.Sprite))
+    -- SetBlipSprite(StoreBlip, , true)
+    -- SetBlipScale(StoreBlip, blipSettings.Scale)
+    -- SetBlipName(StoreBlip, blipSettings.Name)
+	local blip = BlipAddForCoords(1664425300,coords.x, coords.y, coords.z)
+	SetBlipSprite(blip, joaat(blipSettings.Sprite))
 	SetBlipScale(blip, blipSettings.Scale)
-	SetBlipColour(blip, blipSettings.Color)
-	SetBlipAsShortRange(blip, true)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString(blipSettings.Name)
-	EndTextCommandSetBlipName(blip)
+	SetBlipName(StoreBlip, blipSettings.Name)
 end
 
 local function SpawnPed(pedModel, pedPos, pedScenario)
@@ -127,7 +127,7 @@ local function OpenShopUI()
 	DebugPrint("[OpenShopUI]", json.encode({ "Categories:", currentShop.Categories, "Items:", currentShop.Items }))
 
 	lib.callback.await("cloud-shop:server:InShop", false, true)
-	TriggerScreenblurFadeIn(0)
+	-- TriggerScreenblurFadeIn(0)
 
 	ApplySpeechToPed("Generic_Hi", "Speech_Params_Force")
 end
@@ -180,7 +180,7 @@ local function CloseShopUI()
 	inShop = false
 
 	lib.callback.await("cloud-shop:server:InShop", false, false)
-	TriggerScreenblurFadeOut(0)
+	-- TriggerScreenblurFadeOut(0)
 
 	ApplySpeechToPed("Generic_Bye", "Speech_Params_Force")
 end
@@ -249,6 +249,7 @@ end
 
 local function HandleTransaction(transactionType, cartArray)
 	local success, reason = lib.callback.await("cloud-shop:server:ProcessTransaction", false, transactionType, cartArray)
+	print(success)
 	DebugPrint("[BuyLicenseDialog]", reason)
 
 	local sound = success and "ROBBERY_MONEY_TOTAL" or "CHECKPOINT_MISSED"
@@ -295,7 +296,7 @@ end)
 AddEventHandler("onResourceStop", function(resourceName)
 	if GetCurrentResourceName() ~= resourceName then return end
 	if inShop then
-		TriggerScreenblurFadeOut(0)
+		-- TriggerScreenblurFadeOut(0)
 		CloseShopUI()
 	end
 	DeletePeds()
@@ -308,6 +309,6 @@ AddEventHandler("gameEventTriggered", function(event, data)
 	local currentPlayer = cache.playerId
 	if playerDead and NetworkGetPlayerIndexFromPed(player) == currentPlayer and IsPlayerDead(cache.playerId) then
 		if inShop then CloseShopUI() end
-		TriggerScreenblurFadeOut(0)
+		-- TriggerScreenblurFadeOut(0)
 	end
 end)

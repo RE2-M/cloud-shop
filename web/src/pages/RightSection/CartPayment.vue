@@ -16,6 +16,7 @@ const totalPrice = computed(() => {
 })
 
 const payCart = async (type: string): Promise<void> => {
+  
   if (shopStore.cart.length === 0) return
 
   const data = {
@@ -23,8 +24,11 @@ const payCart = async (type: string): Promise<void> => {
     type,
     cart: shopStore.cart,
   }
-
+  console.log(data);
+  
   const response = await fetchData(data)
+  console.log(response);
+  
   if (response === true) {
     clearCart()
   }
@@ -40,7 +44,6 @@ const clearCart = (): void => {
     <p class="payment-title">{{ shopStore.locales.item.paymentTitle }}</p>
     <span class="price">{{ formatPrice(totalPrice) }}</span>
     <div class="pay">
-      <button class="button" @click="payCart('bank')"><Icon icon="mingcute:bank-card-fill" /> {{ shopStore.locales.buttons.payBank }}</button>
       <button class="button" @click="payCart('cash')"><Icon icon="mdi:wallet" /> {{ shopStore.locales.buttons.payCash }}</button>
     </div>
   </section>
@@ -96,7 +99,7 @@ const clearCart = (): void => {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 50%;
+      width: 100%;
       height: 4.25vh;
       border-radius: 0.5vh;
       color: rgb(255, 255, 255);
