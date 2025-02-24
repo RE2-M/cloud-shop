@@ -29,12 +29,3 @@ jobs:
       - name: Build the project
         run: npm run build
         working-directory: ./web
-
-      # Deploy generated build files (Commit to a specific branch)
-      - name: Deploy build files
-        run: |
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "actions@github.com"
-          git add ./build
-          git commit -m "Deploy build files"
-          git push origin main
