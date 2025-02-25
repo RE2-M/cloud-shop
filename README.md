@@ -20,7 +20,7 @@ you can download PreBuild Version from https://github.com/RE2-M/cloud-shop/relea
 
 |                           |                                                             |
 | ------------------------- | ----------------------------------------------------------- |
-| 🛠️・Supported Frameworks: | ESX / QBCore / Custom                                       |
+| 🛠️・Supported Frameworks: | ESX / QBCore / RSGCore / Custom                                       |
 | ⚠️・Dependencies:         | [ox_lib](https://github.com/overextended/ox_lib/releases/)  |
 | ❓・Support:              | [Discord Server](https://discord.gg/jAnEnyGBef)             |
 | ⚖️・License:              | [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/) |
